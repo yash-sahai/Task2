@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }        
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .error-border {
+            border: 1px solid red !important;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <div id="nameError" class="error"></div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <div id="emailError" class="error"></div>
+        </div>
+        <div>
+            <label for="website">Website:</label>
+            <input type="text" id="website" name="website">
+            <div id="websiteError" class="error"></div>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <div id="messageError" class="error"></div>
+        </div>
+        <button onclick="validateForm()">Submit</button>
+    </div>
+
+    <script>
+        function validateForm() {
+            clearErrors();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const website = document.getElementById('website').value.trim();
+            const message = document.getElementById('message').value.trim();
+            let isValid = true;
+
+            if (name === '') {
+                displayError('nameError', 'Name is required.');
+                isValid = false;
+            }
+            if (email === '') {
+                displayError('emailError', 'Email is required.');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                displayError('emailError', 'Email is not valid.');
+                isValid = false;
+            }
+            if (website === '') {
+                displayError('websiteError', 'Website URL is required.');
+                isValid = false;
+            }else if (!isValidWebsite(website)) {
+                displayError('websiteError', 'Website URL is not valid.');
+                isValid = false;
+            }
+            if (message === '') {
+                displayError('messageError', 'Message is required.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('website').value = '';
+                document.getElementById('message').value = '';
+                clearErrors();
+            }
+        }
+
+        function displayError(id, message) {
+            document.getElementById(id).textContent = message;
+            const inputElement = document.getElementById(id.replace('Error', ''));
+            inputElement.classList.add('error-border');
+        }
+
+        function clearErrors() {
+            const errorMessages = document.querySelectorAll('.error');
+            errorMessages.forEach(error => error.textContent = '');
+
+            const inputElements = document.querySelectorAll('input, textarea');
+            inputElements.forEach(input => input.classList.remove('error-border'));
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidWebsite(website) {
+            const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+            return urlRegex.test(website);
+        }
+    </script>
+</body>
+</html>

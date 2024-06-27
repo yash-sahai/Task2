@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            color: blue;
+        }
+        body {
+            display: grid;
+            place-content: center;
+        }
+
+        table {
+            background: rgb(219, 133, 180);
+            background: linear-gradient(0deg,
+                    rgba(219, 133, 180, 1) 12%,
+                    rgba(240, 213, 191, 1) 74%,
+                    rgba(244, 247, 196, 1) 100%);
+            padding: 1rem 3rem;
+            width: 45rem;
+            height: 40rem;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 70%;
+        }
+
+        button {
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+
+        #button {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2"><h1>Registration Form</h1></td>
+        </tr>
+        <tr>
+            <td><label for="fname">First Name </label></td>
+            <td>
+                <input type="text" name="fname" id="fname" required oninput="checkfn()" />
+                <span id="fnpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="lname">Last Name </label></td>
+            <td>
+                <input type="text" name="lname" id="lname" required oninput="checkln()" />
+                <span id="lnpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="email">Email </label></td>
+            <td>
+                <input type="email" name="email" id="email" required oninput="checkmail()" />
+                <span id="mailpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password </label></td>
+            <td>
+                <input type="password" name="password" id="password" required oninput="checkpass()" />
+                <span id="passpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="repassword">Re-enter Password </label></td>
+            <td>
+                <input type="password" name="repassword" id="repassword" required oninput="checkrepass()" />
+                <span id="repasspop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="gender">Gender </label></td>
+            <td>
+                <input style="width: fit-content" type="radio" name="gender" id="male" checked />
+                Male
+                <br />
+                <input style="width: fit-content" type="radio" name="gender" id="female" />
+                Female
+            </td>
+        </tr>
+        <tr>
+            <td><label for="age">Age </label></td>
+            <td><input type="number" name="age" id="age" required oninput="checkage()" />
+                <span id="agepop"></span></td>
+        </tr>
+        <tr>
+            <td><label for="phone">Phone Number </label></td>
+            <td>
+                <input type="tel" name="phone" id="phone" oninput="checkphno()" />
+                <span id="phnopop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address">Address </label>
+            </td>
+            <td>
+                <textarea name="address" id="address" cols="30" rows="10" required oninput="checkadd()"></textarea>
+                <span id="addpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="state">State </label></td>
+            <td><input type="text" name="state" id="state" required oninput="checkstate()" />
+                <span id="statepop"></span></td>
+        </tr>
+        <tr>
+            <td><label for="country">Country </label></td>
+            <td>
+                <select>
+                    <option value="none">Choose your country</option>
+                    <option value="AFG">Afghanistan</option>
+                    <option value="ALA">Aland Islands</option>
+                    <option value="ALB">Albania</option>
+                    <option value="DZA">Algeria</option>
+                    <option value="ASM">American Samoa</option>
+                    <option value="AND">Andorra</option>
+                    <option value="AGO">Angola</option>
+                    <option value="AIA">Anguilla</option>
+                    <option value="ATA">Antarctica</option>
+                    <option value="ATG">Antigua </option>
+                    <option value="ARG">Argentina</option>
+                    <option value="ARM">Armenia</option>
+                    <option value="ABW">Aruba</option>
+                    <option value="AUS">Australia</option>
+                    <option value="AUT">Austria</option>
+                    <option value="AZE">Azerbaijan</option>
+                    <option value="IND">India</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lang">Language Known </label>
+            </td>
+            <td>
+                <input style="width: fit-content" type="checkbox" name="lang" id="eng" oninput="checklang()" />
+                English
+                <input style="width: fit-content" type="checkbox" name="lang" id="kannada" oninput="checklang()" />
+                Kannada
+                <input style="width: fit-content" type="checkbox" name="lang" id="Hindi" oninput="checklang()" />
+                Hindi
+                <input style="width: fit-content" type="checkbox" name="lang" id="Telugu" oninput="checklang()" />
+                Telugu
+                <span id="langpop"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input style="width: fit-content" type="checkbox" name="declaration" />
+                Hereby I declare all the given details are true
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p style="text-align: right;">Log in to <a href="https://ethnus.com">Ethnus</a> website</p>
+            </td>
+        </tr>
+        <tr>
+            <td id="button" colspan="2">
+                <button type="submit">Register</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function checkfn() {
+            var fn = document.getElementById("fname").value;
+            var fnpop = document.getElementById("fnpop");
+
+            if (fn.length < 3) {
+                fnpop.innerHTML = "POOR";
+                fnpop.style.color = "red";
+                fnpop.style.display = "inline-block";
+            } else {
+                fnpop.innerHTML = "Good";
+                fnpop.style.color = "green";
+                fnpop.style.display = "inline-block";
+            }
+        }
+
+        function checkln() {
+            var ln = document.getElementById("lname").value;
+            var lnpop = document.getElementById("lnpop");
+
+            if (ln.length < 3) {
+                lnpop.innerHTML = "POOR";
+                lnpop.style.color = "red";
+                lnpop.style.display = "inline-block";
+            } else {
+                lnpop.innerHTML = "Good";
+                lnpop.style.color = "green";
+                lnpop.style.display = "inline-block";
+            }
+        }
+
+        function checkmail() {
+            var mail = document.getElementById("email").value;
+            var mailpop = document.getElementById("mailpop");
+
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            let x = re.test(String(mail).toLowerCase());
+
+            if (x == false) {
+                mailpop.innerHTML = "POOR";
+                mailpop.style.color = "red";
+                mailpop.style.display = "inline-block";
+            } else {
+                mailpop.innerHTML = "Good";
+                mailpop.style.color = "green";
+                mailpop.style.display = "inline-block";
+            }
+        }
+
+        function checkpass() {
+            var pass = document.getElementById("password").value;
+            var passpop = document.getElementById("passpop");
+
+            if (pass.length < 6) {
+                passpop.innerHTML = "POOR";
+                passpop.style.color = "red";
+                passpop.style.display = "inline-block";
+            } else {
+                passpop.innerHTML = "Good";
+                passpop.style.color = "green";
+                passpop.style.display = "inline-block";
+            }
+        }
+
+        function checkrepass() {
+            var repass = document.getElementById("repassword").value;
+            var pass = document.getElementById("password").value;
+            var repasspop = document.getElementById("repasspop");
+
+            if (repass.length < 6 || repass !== pass) {
+                repasspop.innerHTML = "POOR OR MISMATCH";
+                repasspop.style.color = "red";
+                repasspop.style.display = "inline-block";
+            } else {
+                repasspop.innerHTML = "Good";
+                repasspop.style.color = "green";
+                repasspop.style.display = "inline-block";
+            }
+        }
+
+        function checkage() {
+            var age = document.getElementById("age").value;
+            var agepop = document.getElementById("agepop");
+
+            if (age < 18) {
+                agepop.innerHTML = "POOR";
+                agepop.style.color = "red";
+                agepop.style.display = "inline-block";
+            } else {
+                agepop.innerHTML = "Good";
+                agepop.style.color = "green";
+                agepop.style.display = "inline-block";
+            }
+        }
+
+        function checkphno() {
+            var phno = document.getElementById("phone").value;
+            var phnopop = document.getElementById("phnopop");
+
+            if (phno.length !== 10) {
+                phnopop.innerHTML = "POOR";
+                phnopop.style.color = "red";
+                phnopop.style.display = "inline-block";
+            } else {
+                phnopop.innerHTML = "Good";
+                phnopop.style.color = "green";
+                phnopop.style.display = "inline-block";
+            }
+        }
+
+        function checkadd() {
+            var add = document.getElementById("address").value;
+            var addpop = document.getElementById("addpop");
+
+            if (add.length < 10) {
+                addpop.innerHTML = "POOR";
+                addpop.style.color = "red";
+                addpop.style.display = "inline-block";
+            } else {
+                addpop.innerHTML = "Good";
+                addpop.style.color = "green";
+                addpop.style.display = "inline-block";
+            }
+        }
+
+        function checkstate() {
+            var state = document.getElementById("state").value;
+            var statepop = document.getElementById("statepop");
+
+            if (state.length < 3) {
+                statepop.innerHTML = "POOR";
+                statepop.style.color = "red";
+                statepop.style.display = "inline-block";
+            } else {
+                statepop.innerHTML = "Good";
+                statepop.style.color = "green";
+                statepop.style.display = "inline-block";
+            }
+        }
+
+        function checklang() {
+            var checkboxes = document.querySelectorAll('input[name="lang"]:checked');
+            var langpop = document.getElementById("langpop");
+
+            if (checkboxes.length === 0) {
+                langpop.innerHTML = "Please select at least one language.";
+                langpop.style.color = "red";
+                langpop.style.display = "inline-block";
+            } else {
+                langpop.innerHTML = "";
+                langpop.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
